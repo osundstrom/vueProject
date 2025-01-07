@@ -13,7 +13,7 @@ export default {
 <main>
 
 <h1>Välkommen</h1>
-<navigation/>
+
 <loginForm/>
   
 </main>

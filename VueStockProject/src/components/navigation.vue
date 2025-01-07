@@ -5,6 +5,13 @@
     name: "navigation",
     components: {
       RouterLink
+    },
+
+    methods: {
+      logout() {
+        localStorage.removeItem("token");
+        console.log("utloggad")
+      }
     }
   }
 
@@ -20,9 +27,9 @@
 
 
 <ul>
-  <li><RouterLink  to="/">Login</RouterLink></li>
-  <li><RouterLink  to="/stock">Stock</RouterLink></li>
-  
+  <li>
+    <RouterLink  to="/" @click="logout">Logga ut</RouterLink>
+  </li>
 </ul>
 
 
