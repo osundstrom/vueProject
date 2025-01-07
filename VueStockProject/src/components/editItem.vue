@@ -6,6 +6,12 @@ export default {
       type: Object,
       default: null,
     },
+    
+  },
+  data() {
+    return{
+        errorMessage: "",
+    }
   },
   methods: {
     async updateItem() {
@@ -35,7 +41,14 @@ export default {
 
     uploadFile(x) {
       const file  = x.target.files[0];
+      const maxSize = 500 * 1024;
       if (file) {
+        if(file.size > maxSize) {
+            this.errorMessage = "Fil är för stor, max 500kb";
+            this.item.itemImage = null;
+        }else {
+            this.errorMessage = "";
+        }
         const reader = new FileReader();
         reader.onload = () => {
           this.itemEdited.itemImage = reader.result; 
@@ -74,6 +87,7 @@ export default {
   <label for="formFile" class="form-label">Lägg till bild</label>
   <input class="form-control" @change="uploadFile"  type="file" id="formFile" >
 </div>
+<div id="errorDiv" v-if="errorMessage" class="alert alert-primary" >{{ errorMessage }}</div>
 <div class="col">
     <button class="btn btn-primary" type="submit">Uppdatera</button>
     <button type="button" @click="closeEdit" class="btn btn-secondary">Cancel</button>

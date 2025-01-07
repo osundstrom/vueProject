@@ -10,7 +10,7 @@ export default {
     data(){
     return {
       allItems:[],
-      
+      searchText:"",
       editingItem: null,
     }
   },
@@ -48,11 +48,11 @@ export default {
       },
 
 
-      openEdit(item) {
+     openEdit(item) {
       this.editingItem = {...item}; 
     },
 
-    closeEdit() {
+     closeEdit() {
       this.editingItem = null; 
     },
 
@@ -65,10 +65,33 @@ export default {
       this.closeEdit(); 
     },
 
+    
 
         },
+
+        computed: {
+         searchedItem() {
+
+
+            if(this.searchText === "") {
+                console.log("helt tom")
+                return this.allItems;
+            }else {
+                  
+                return this.allItems.filter((item) => {
+                    const brandSearch = item.itemBrand && item.itemBrand.toLowerCase().includes(this.searchText.toLowerCase());
+                    const codeSearch = item.itemCode && item.itemCode.toLowerCase().includes(this.searchText.toLowerCase());
+                    return brandSearch || codeSearch;
+                });
+
+            }
+        }
+    },
+
         mounted() {
+            console.log("Mounted: searchText is", this.searchText);
             this.getItems();
+            
     }
     
   }
@@ -83,8 +106,13 @@ export default {
 <addItem @itemAdded="getItems"/>
     <div id="divItems" class="container " >   
         <div class="row d-flex justify-content-start">
-            
-        <oneItem v-for="oneItem in allItems" :key="oneItem._id" :oneItem="oneItem" @deleteItem="deleteItem" @editItem="openEdit" />
+
+        <div class="container">
+    <div id="searchDiv" class="">
+      <input type="text" v-model="searchText" placeholder="Sök produkt" class="form-control"/>
+    </div>
+    </div>
+    <oneItem v-for ="oneItem in searchedItem" :key="oneItem._id" :oneItem="oneItem" @deleteItem="deleteItem" @editItem="openEdit"/>
     
     </div>
     </div>
@@ -116,6 +144,9 @@ main{
     margin-top: 2rem;
 }
 
+#searchDiv{
+    margin-top: 2vh;
+}
+
 
 </style>
-

@@ -106,7 +106,7 @@ import OneItem from './oneItem.vue';
   <label for="formFile" class="form-label">Lägg till bild</label>
   <input class="form-control" type="file" id="formFile" @change="uploadFile" >
 </div>
-<div id="errorDiv" v-if="errorMessage" class="alert" >{{ errorMessage }}</div>
+<div id="errorDiv" v-if="errorMessage" class="alert alert-primary" >{{ errorMessage }}</div>
 <div class="col">
     <button class="btn btn-primary" type="submit">Lägg till</button>
   </div>
@@ -118,7 +118,7 @@ import OneItem from './oneItem.vue';
 
 <style scoped>
 #errorDiv{
-    color: white;
+    color: black;
 }
 
 </style>
