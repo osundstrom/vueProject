@@ -46,9 +46,22 @@ export default {
         if(file.size > maxSize) {
             this.errorMessage = "Fil är för stor, max 500kb";
             this.item.itemImage = null;
+            x.target.value = "";
+            return;
         }else {
             this.errorMessage = "";
         }
+        //lägg till check för filtyp.
+
+        if (!file.type.startsWith("image/")) {
+            this.errorMessage = "Endast bildfiler är tillåtna";
+            this.item.itemImage = null;
+            x.target.value = null;
+            return;
+        }else {
+          this.errorMessage = "";
+        }
+        
         const reader = new FileReader();
         reader.onload = () => {
           this.itemEdited.itemImage = reader.result; 
@@ -85,9 +98,10 @@ export default {
   </div>
   <div class="mb-3">
   <label for="formFile" class="form-label">Lägg till bild</label>
+  <div id="errorDiv" v-if="errorMessage" class="alert alert-primary" >{{ errorMessage }}</div>
   <input class="form-control" @change="uploadFile"  type="file" id="formFile" >
 </div>
-<div id="errorDiv" v-if="errorMessage" class="alert alert-primary" >{{ errorMessage }}</div>
+
 <div class="col">
     <button class="btn btn-primary" type="submit">Uppdatera</button>
     <button type="button" @click="closeEdit" class="btn btn-secondary">Cancel</button>

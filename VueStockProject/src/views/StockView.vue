@@ -102,8 +102,21 @@ export default {
 
 <main>
     <navigation/>
-<h1 class="d-flex justify-content-center">Lagersaldo</h1>
-<addItem @itemAdded="getItems"/>
+    <h1 class="d-flex justify-content-center">Lagersaldo</h1>
+<div class="container">
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Lägg till produkt</button>
+
+<div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+  <div class="offcanvas-header">
+    
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <addItem @itemAdded="getItems"/>
+  </div>
+</div>
+</div>
+
     <div id="divItems" class="container " >   
         <div class="row d-flex justify-content-start">
 
@@ -147,6 +160,14 @@ main{
 #searchDiv{
     margin-top: 2vh;
 }
+
+.offcanvas{
+  background-color: aliceblue;
+  top: 0;
+  overflow-x: hidden ;
+  height: fit-content;
+}
+
 
 
 </style>

@@ -10,8 +10,8 @@ import OneItem from './oneItem.vue';
             item: { 
                 itemCode: "", 
                 itemBrand: "", 
-                itemStock: 0, 
-                itemPrice: 0,
+                itemStock: "", 
+                itemPrice: "",
                 itemImage: "",
             },
             errorMessage: "",
@@ -29,7 +29,18 @@ import OneItem from './oneItem.vue';
                 if(file.size > maxSize) {
                     this.errorMessage = "Fil är för stor, max 500kb";
                     this.item.itemImage = null;
+                    x.target.value = "";
+                    return;
                 }else{
+                    this.errorMessage = "";
+                }
+
+                if (!file.type.startsWith("image/")) {
+                    this.errorMessage = "Endast bildfiler är tillåtna";
+                    this.item.itemImage = null;
+                    x.target.value = "";
+                    return;
+                 }else {
                     this.errorMessage = "";
                 }
                 try{
@@ -102,11 +113,13 @@ import OneItem from './oneItem.vue';
     <label for="itemPrice">Pris</label>
     <input type="number" class="form-control" placeholder="Pris" aria-label="item price" v-model="item.itemPrice" required>
   </div>
+  
   <div class="mb-3">
   <label for="formFile" class="form-label">Lägg till bild</label>
+  <div id="errorDiv" v-if="errorMessage" class="alert alert-primary" >{{ errorMessage }}</div>
   <input class="form-control" type="file" id="formFile" @change="uploadFile" >
 </div>
-<div id="errorDiv" v-if="errorMessage" class="alert alert-primary" >{{ errorMessage }}</div>
+
 <div class="col">
     <button class="btn btn-primary" type="submit">Lägg till</button>
   </div>
@@ -120,5 +133,6 @@ import OneItem from './oneItem.vue';
 #errorDiv{
     color: black;
 }
+
 
 </style>
