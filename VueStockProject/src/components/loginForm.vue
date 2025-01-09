@@ -57,10 +57,11 @@ methods: {
 
 
 <template>
-<div id="fullform" class="container-md">
-    <div id="errorDiv"></div>
+    
+<div id="fullform" class="conatiner-md" >
+    
 
-<form @submit.prevent="loginFunc">
+<form @submit.prevent="loginFunc" class="container-md">
   <div class="mb-3">
     <label for="InputEmail" class="form-label">Användare</label>
     <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="name@example.com">
@@ -69,12 +70,12 @@ methods: {
             <label for="InputPassword" class="form-label">Lösenord</label>
             <input type="password" class="form-control" id="InputPassword" placeholder="Lösenord">
         </div>
-
+        
             <button type="submit" class="btn btn-primary">Logga in</button>
 </form>
 
 </div>
-
+<div id="errorDiv"></div>
 
 </template>
 
@@ -84,20 +85,29 @@ methods: {
 <style scoped>
  
     form{
-        width: 30vw;
         background-color: rgba(255, 255, 255, 0.75);
         padding: 2%;
         border-radius: 10px;
+
+        @media (min-width: 750px) {
+        width: 40vw;
+    }
     }
   
 
   #fullform{
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color: white;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     
+}
+
+
+
+  #errorDiv{
+    display: flex;
+    justify-content: center;
+    color: white;
+    text-shadow: -1px -1px 0 #ff0000, 1px -1px 0 #ff0000, -1px 1px 0 #ff0000, 1px 1px 0 #ff0000;
   }
     
 
