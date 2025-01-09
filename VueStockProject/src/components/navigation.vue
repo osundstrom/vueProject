@@ -28,7 +28,7 @@
 
 <ul>
   <li>
-    <RouterLink  to="/" @click="logout">Logga ut</RouterLink>
+    <button type="button" class="btn btn-danger"><RouterLink  to="/" @click="logout">Logga ut</RouterLink></button>
   </li>
 </ul>
 
@@ -41,9 +41,12 @@
 
 <style scoped>
   ul{
+    display: flex;
+    justify-content: end;
     color: black;
     list-style: none;
     text-align: center;
+    padding-top: 1vh;
   }
   li{
     display: inline-block;
@@ -55,7 +58,7 @@
     text-decoration: none;
     color: black;
   }
-  a:hover{
+  button:hover a{
     color: white;
   }
     

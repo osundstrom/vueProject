@@ -50,12 +50,18 @@ padding-top: 100%;
 overflow: hidden;
 }
 
+.card{
+  background-color: rgba(255, 255, 255, 0.70);
+}
+
 .card-body{
     text-align: center;
+    
 }
 
 #cardDiv {
     padding: 1vw; 
+    
 }
 
 </style>

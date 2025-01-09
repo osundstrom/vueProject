@@ -121,7 +121,7 @@ import OneItem from './oneItem.vue';
 </div>
 
 <div class="col">
-    <button class="btn btn-primary" type="submit">Lägg till</button>
+    <button class="btn btn-dark" type="submit">Lägg till</button>
   </div>
 </div>
 </form>
@@ -133,6 +133,8 @@ import OneItem from './oneItem.vue';
 #errorDiv{
     color: black;
 }
+
+
 
 
 </style>

@@ -104,7 +104,7 @@ export default {
     <navigation/>
     <h1 class="d-flex justify-content-center">Lagersaldo</h1>
 <div class="container">
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Lägg till produkt</button>
+<button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"><i class="fa-solid fa-plus"></i> Ny produkt</button>
 
 <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
   <div class="offcanvas-header">
@@ -144,7 +144,9 @@ export default {
 
 <style scoped>
 main{
-    background-image: url("/src/assets/backMain.jpg");
+    background: 
+      linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.2)),
+      url("/src/assets/backMain.jpg");
     background-size: cover; 
     background-position: center; 
     min-height: 100vh;
@@ -155,6 +157,7 @@ main{
 
 #divitems{
     margin-top: 2rem;
+    
 }
 
 #searchDiv{
@@ -166,6 +169,10 @@ main{
   top: 0;
   overflow-x: hidden ;
   height: fit-content;
+}
+
+h1{
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 
