@@ -1,7 +1,7 @@
 
 <script>
 
-let url = "http://localhost:3000/login";
+let url = "https://projektramverkbackend.onrender.com/login";
 export default {
     name: "loginForm",
 

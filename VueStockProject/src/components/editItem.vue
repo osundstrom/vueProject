@@ -17,7 +17,7 @@ export default {
     async updateItem() {
       try {
         const updatedItem = this.itemEdited;
-        const response = await fetch(`http://localhost:3000/item/${updatedItem._id}`, {
+        const response = await fetch(`https://projektramverkbackend.onrender.com/item/${updatedItem._id}`, {
           method: "PUT",
           headers: {
             "Accept": "application/json",

@@ -4,7 +4,7 @@ import oneItem from '../components/oneItem.vue'
 import addItem from '../components/addItem.vue'
 import editItem from "../components/editItem.vue";
 
-let url = "http://localhost:3000/item";
+let url = "https://projektramverkbackend.onrender.com/item";
 
 export default {
     data(){

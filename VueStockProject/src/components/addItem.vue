@@ -61,7 +61,7 @@ import OneItem from './oneItem.vue';
                 
                     let fullItem = this.item
                     
-                    const response = await fetch("http://localhost:3000/item", {
+                    const response = await fetch("https://projektramverkbackend.onrender.com/item", {
                         method:"POST", 
                         headers: {
                                 "Accept": "application/json", 
