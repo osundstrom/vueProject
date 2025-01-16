@@ -21,8 +21,8 @@
     <p class="card-text"> Märke: {{oneItem.itemBrand}} </p>
     <p class="card-text"> Saldo:{{oneItem.itemStock}} </p>
     <p class="card-text"> Pris: {{oneItem.itemPrice}} </p>
-    <button type="button" @click="$emit(`deleteItem`, oneItem._id)" class="btn btn-danger"><i class="fa-regular fa-trash-can fa-sm"></i></button>
-    <button type="button" @click="$emit(`editItem`, oneItem)"class="btn btn-warning"><i class="fa-regular fa-pen-to-square fa-sm"></i></button>
+    <button id="but1" type="button" @click="$emit(`deleteItem`, oneItem._id)" class="btn btn-danger"><i class="fa-regular fa-trash-can fa-sm"></i></button>
+    <button id="but2" type="button" @click="$emit(`editItem`, oneItem)"class="btn btn-warning"><i class="fa-regular fa-pen-to-square fa-sm"></i></button>
   </div>
 </div>
 </div>
@@ -62,6 +62,13 @@ overflow: hidden;
 #cardDiv {
     padding: 1vw; 
     
+}
+
+#but1{
+  float: left;
+}
+#but2{
+  float: right;
 }
 
 </style>
