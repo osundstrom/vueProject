@@ -1,6 +1,7 @@
 
 <script>
 
+//URL
 let url = "https://projektramverkbackend.onrender.com/login";
 export default {
     name: "loginForm",
@@ -9,33 +10,41 @@ export default {
 methods: {
 
     
-
+//funktion för inlogg
     async loginFunc() {
-        console.log("test")
+        //console.log("test")
+
+        //hämtar email och lösenord rån formulär
         const email = document.getElementById("InputEmail").value;
         const password = document.getElementById("InputPassword").value;
-        let errorDiv = document.getElementById("errorDiv");
+        let errorDiv = document.getElementById("errorDiv"); //ferlmeddelanden
         try {
-
+            //POST förfrågan
             const response = await fetch(url, {
                 method: "POST",
                 headers: { "Content-Type": "application/json",
             },
 
+            //Skickar mail och lösen
             body: JSON.stringify({
                 email: email,
                 password: password
             })
         }) 
 
+        //om misslyckas
         if (!response.ok) { 
         console.log("error")
         throw new Error("inloggning misslyckades"); 
       }
         
+      //Väntar svar och till JSON
         const data = await response.json();
+
+        //Sparar token i loclastorage
         localStorage.setItem("token", data.recivedToken.token);
 
+        //Om token finns så skcikas man vidare till /stock 
         if (data.recivedToken && data.recivedToken.token) {
         this.$router.push("/stock");
         }else {
@@ -62,6 +71,7 @@ methods: {
     
 
 <form @submit.prevent="loginFunc" class="container-md">
+    <!-- Formulär inloggning -->
   <div class="mb-3">
     <label for="InputEmail" class="form-label">Användare</label>
     <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="name@example.com">

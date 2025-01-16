@@ -4,17 +4,18 @@
   export default {
     name: "navigation",
     components: {
-      RouterLink
+      RouterLink 
     },
 
     methods: {
+      //funktion utlogg
       logout() {
-        localStorage.removeItem("token");
+        localStorage.removeItem("token"); //tar bort token.
         console.log("utloggad")
       }
     }
   }
-
+//importerar routerlink
   import { RouterLink } from 'vue-router';
 
 </script>
@@ -28,6 +29,7 @@
 
 <ul>
   <li>
+     <!-- Knapp för utlogg-->
     <button type="button" class="btn btn-danger"><RouterLink  to="/" @click="logout">Logga ut</RouterLink></button>
   </li>
 </ul>

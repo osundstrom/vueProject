@@ -1,5 +1,6 @@
 <script>
 
+//importerar
 import navigation from '../components/navigation.vue'
 import loginForm from '../components/loginForm.vue'
 
@@ -14,7 +15,7 @@ export default {
 
 <h1>Välkommen</h1>
 
-<loginForm/>
+<loginForm/> <!--Visar loginForm komponenten-->
   
 </main>
 </template>
