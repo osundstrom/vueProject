@@ -24,9 +24,24 @@ export default {
     methods: {
       //funktin för hämta alla produkter
         async getItems() {
-          //skickar en fetch för att hmta från URL.
+          //kollar efter token
+          const token = localStorage.getItem("token");
+          
+          //om inge token
+          if (!token) {
+            console.error("Ingen token hittas");
+            return;
+        }
+          //skickar en fetch förfrågan för att hmta från URL.
             try {
-                const response = await fetch(url);
+                
+                const response = await fetch(url, {
+                  method: "GET",
+                  headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": 'application/json'
+                  }
+                });
                 const data = await response.json(); //väntar svar och till JSON
                 console.log(data);
                 this.allItems = data; //sparar alla i allItems
@@ -37,12 +52,19 @@ export default {
         },
 
         async deleteItem(_id) { //funktion radera baserat på _id
+          const token = localStorage.getItem("token");
+
+          if (!token) {
+          console.error("Ingen token hittades");
+          return;
+    }
         try{
           const res = await fetch(url + "/"+  _id, { //radera baserat på id
             method: "DELETE", //radera
             headers: {
               "Accept": "application/json", //accepterar json
-              "Content-type": "application/json" //skickar json
+              "Content-type": "application/json", //skickar json
+              "Authorization": `Bearer ${token}`
              }
           });
           const data = await res.json(); 

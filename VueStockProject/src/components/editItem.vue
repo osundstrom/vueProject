@@ -16,6 +16,13 @@ export default {
   methods: {
     //funktion uppdatera produkt
     async updateItem() {
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        console.error("Ingen token finns");
+        return;
+      }
+
       try {
         const updatedItem = this.itemEdited;
         //PUT förfrågan 
@@ -24,6 +31,7 @@ export default {
           headers: {
             "Accept": "application/json",
             "Content-type": "application/json",
+            "Authorization": `Bearer ${token}`,
           },
           body: JSON.stringify(updatedItem),//Skcikar uppdaterade
         });

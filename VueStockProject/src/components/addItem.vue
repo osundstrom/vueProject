@@ -61,15 +61,22 @@ import OneItem from './oneItem.vue';
         
         async addItem(){ 
             try {
-                
+
                     let fullItem = this.item //hämtar item
+
+                    const token = localStorage.getItem("token");
+                    if (!token) {
+                        console.error("Ingen token hittas");
+                        return;
+                    }
                     
                     //POST förfrågan till backend
                     const response = await fetch("https://projektramverkbackend.onrender.com/item", {
                         method:"POST", 
                         headers: {
                                 "Accept": "application/json", 
-                                "Content-type": "application/json" 
+                                "Content-type": "application/json",
+                                "Authorization": `Bearer ${token}` 
                                 },
                         body: JSON.stringify(fullItem) //till JSON
                         })
