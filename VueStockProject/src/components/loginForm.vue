@@ -56,7 +56,7 @@ methods: {
 
         }catch (error) {
             console.error(error);
-            errorDiv.textContent = "Misslyckat";   
+            errorDiv.textContent = "Felaktigt användarnamn/lösenord";   
         }
     }
 
