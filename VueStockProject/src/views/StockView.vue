@@ -52,9 +52,9 @@ export default {
         },
 
         async deleteItem(_id) { //funktion radera baserat på _id
-          const token = localStorage.getItem("token");
+          const token = localStorage.getItem("token");//hämtar token
 
-          if (!token) {
+          if (!token) { //om token ej finns
           console.error("Ingen token hittades");
           return;
     }

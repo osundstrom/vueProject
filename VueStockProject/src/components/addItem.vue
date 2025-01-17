@@ -64,8 +64,8 @@ import OneItem from './oneItem.vue';
 
                     let fullItem = this.item //hämtar item
 
-                    const token = localStorage.getItem("token");
-                    if (!token) {
+                    const token = localStorage.getItem("token"); //hämtar token
+                    if (!token) { //om ej finns
                         console.error("Ingen token hittas");
                         return;
                     }
@@ -74,9 +74,9 @@ import OneItem from './oneItem.vue';
                     const response = await fetch("https://projektramverkbackend.onrender.com/item", {
                         method:"POST", 
                         headers: {
-                                "Accept": "application/json", 
-                                "Content-type": "application/json",
-                                "Authorization": `Bearer ${token}` 
+                                "Accept": "application/json",  //response JSON
+                                "Content-type": "application/json", //sätt till json
+                                "Authorization": `Bearer ${token}` //skickar med token 
                                 },
                         body: JSON.stringify(fullItem) //till JSON
                         })
