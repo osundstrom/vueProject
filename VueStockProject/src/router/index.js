@@ -15,7 +15,7 @@ const router = createRouter({
       component: () => import('../views/StockView.vue'),
       beforeEnter: (to, from, next) => {
         
-        const token = localStorage.getItem("token");
+        const token = sessionStorage.getItem("token");
         if (token) {
           next();
         } else {

@@ -64,7 +64,7 @@ import OneItem from './oneItem.vue';
 
                     let fullItem = this.item //hämtar item
 
-                    const token = localStorage.getItem("token"); //hämtar token
+                    const token = sessionStorage.getItem("token"); //hämtar token
                     if (!token) { //om ej finns
                         console.error("Ingen token hittas");
                         return;

@@ -16,7 +16,7 @@ export default {
   methods: {
     //funktion uppdatera produkt
     async updateItem() {
-      const token = localStorage.getItem("token"); //hämtar token
+      const token = sessionStorage.getItem("token"); //hämtar token
 
       if (!token) { //om ej finns
         console.error("Ingen token finns");

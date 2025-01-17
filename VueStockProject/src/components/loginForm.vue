@@ -35,14 +35,17 @@ methods: {
         //om misslyckas
         if (!response.ok) { 
         console.log("error")
-        throw new Error("inloggning misslyckades"); 
+        errorDiv.textContent = "Felaktigt användarnamn/lösenord"; 
+        throw new Error("Felaktigt användarnamn/lösenord"); 
+        
       }
         
       //Väntar svar och till JSON
         const data = await response.json();
-
+        console.log(data);
+        console.log("token:", data.recivedToken.token);
         //Sparar token i loclastorage
-        localStorage.setItem("token", data.recivedToken.token);
+        sessionStorage.setItem("token", data.recivedToken.token);
 
         //Om token finns så skcikas man vidare till /stock 
         if (data.recivedToken && data.recivedToken.token) {
@@ -53,8 +56,7 @@ methods: {
 
         }catch (error) {
             console.error(error);
-            errorDiv.textContent = "Felaktigt användarnamn/lösenord"; 
-             
+            errorDiv.textContent = "Misslyckat";   
         }
     }
 

@@ -10,7 +10,7 @@
     methods: {
       //funktion utlogg
       logout() {
-        localStorage.removeItem("token"); //tar bort token.
+        sessionStorage.removeItem("token"); //tar bort token.
         console.log("utloggad")
       }
     }

@@ -25,7 +25,7 @@ export default {
       //funktin för hämta alla produkter
         async getItems() {
           //kollar efter token
-          const token = localStorage.getItem("token");
+          const token = sessionStorage.getItem("token");
           
           //om inge token
           if (!token) {
@@ -52,7 +52,7 @@ export default {
         },
 
         async deleteItem(_id) { //funktion radera baserat på _id
-          const token = localStorage.getItem("token");//hämtar token
+          const token = sessionStorage.getItem("token");//hämtar token
 
           if (!token) { //om token ej finns
           console.error("Ingen token hittades");
